@@ -1,5 +1,5 @@
-Event Management System(EMS)
-Registration and Login Example with Spring MVC, Spring Security, Spring Data JPA,  Maven, JSP, MySQL with XML configuration.
+User Management System:
+Registration and Login Example with Spring MVC, Spring Security, Spring AOP, Spring Data JPA, Maven, JSP, MySQL with XML configuration.
 where Users are able to create, update information.
 
 Prerequisites:-
@@ -13,11 +13,13 @@ Stack:-
 
 Spring MVC4
 Spring Security
+Spring AOP
 Spring Data JPA
 Maven
 JSP
 MySQL
 Ajax
+JQuery
 
 
 Run:-
