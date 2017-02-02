@@ -5,52 +5,84 @@ import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
+import com.ems.persistence.domain.common.City;
+import com.ems.persistence.domain.common.Country;
+import com.ems.persistence.domain.common.State;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="user")
 public class User implements Serializable{
 
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 5276314425439956977L;
+
 	@Id
-	@GeneratedValue
+	@NotNull
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
 	
-	@Column(name="user_name")
+	@NotNull
+	@Column(name="user_name", unique = true)
 	private String userName;
 	
 	@Column(name="password")
 	private String password;
 	
+	@NotNull
 	@Column(name="first_name")
 	private String firstName;
 	
 	@Column(name="last_name")
 	private String lastName;
 	
+	@NotNull
 	@Column(name="email")
 	private String email;
 	
 	@Column(name="mobile_no")
 	private String mobileNo;
 	
+	@NotNull
 	@Column(name="address")
 	private String address;
 	
+	@OneToOne
+	@JoinColumn(name="country_id", nullable = false, insertable = false, updatable = false)
+	@JsonIgnore
+	private Country country;
+	
+	@OneToOne
+	@JoinColumn(name="state_id", nullable = false, insertable = false, updatable = false)
+	@JsonIgnore
+	private State state;
+	
+	@OneToOne
+	@JoinColumn(name="city_id", nullable = false, insertable = false, updatable = false)
+	@JsonIgnore
+	private City city;
+	
+	@NotNull
 	@Column(name="country_id")
 	private int countryId;
 	
+	@NotNull
 	@Column(name="state_id")
 	private int stateId;
 	
+	@NotNull
 	@Column(name="city_id")
 	private int cityId;
 	
@@ -188,4 +220,29 @@ public class User implements Serializable{
 	public void setLast_date_access(Calendar last_date_access) {
 		this.last_date_access = last_date_access;
 	}
+	
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
+	}
+
+	public State getState() {
+		return state;
+	}
+
+	public void setState(State state) {
+		this.state = state;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+	
 }

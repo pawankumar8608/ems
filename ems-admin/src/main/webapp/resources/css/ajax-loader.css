@@ -1,0 +1,3 @@
+#loaderOverlay{position:fixed;top:0px;left:0px;height:100%;width:100%;background:#FFFFFF;opacity:0.6;z-index:10000000;}
+#loaderLoading{width: 100px;position: fixed;z-index: 10000001;background: url(../img/ajax-loader.gif) top left no-repeat;height: 100px;background-size: 100px 100px;}
+#loaderMessage{opacity:0;width: 220px;position: fixed;z-index: 10000001;left: 633px;background-color: #319C31;top: 0px;border-bottom-left-radius: 3px;border-top: 2px solid;border-bottom-right-radius: 3px;padding: 5px;text-align: center;vertical-align: middle;color: #ffffff;font-family: arial;text-transform: capitalize;border-color: #000;}

@@ -3,7 +3,6 @@ package com.ems.persistence.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,7 +37,7 @@ public class Administrator implements Serializable{
 	@Column(name="first_name", nullable=false)
 	private String firstName;
 	
-	@Column(name="last_name", nullable=false)
+	@Column(name="last_name")
 	private String lastName;
 	
 	@Column(name="email", nullable=false)

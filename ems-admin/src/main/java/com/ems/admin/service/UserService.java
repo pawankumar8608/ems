@@ -6,12 +6,16 @@ import com.ems.persistence.domain.User;
 
 public interface UserService {
 	 
-	public List<User> findAllUsers();
+	public List<Object[]> findUsers();
 	
 	public void createUser(UserForm user);
 	
 	public User findByExactUserName(String userName);
 	
 	public User authenticate(String userName, String password);
+	
+	public User loadUser(long id);
+	
+	public void updateUser(UserForm user);
 
 }

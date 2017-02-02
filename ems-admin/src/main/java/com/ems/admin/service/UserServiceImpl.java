@@ -2,11 +2,10 @@ package com.ems.admin.service;
 
 import java.util.List;
 import javax.annotation.Resource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
+import org.springframework.transaction.annotation.Transactional;
 import com.ems.admin.dto.UserForm;
 import com.ems.persistence.dao.UserDao;
 import com.ems.persistence.domain.User;
@@ -21,8 +20,9 @@ public class UserServiceImpl implements UserService{
 	private BCryptPasswordEncoder encoder;
 	
 	@Override
-	public List<User> findAllUsers() {
-		return (List<User>) userDao.findAll();
+	public List<Object[]> findUsers() {
+		List<Object[]> userList = userDao.getUsers();
+		return userList;
 	}
 
 	@Override
@@ -61,5 +61,28 @@ public class UserServiceImpl implements UserService{
 		   }
 		        return null;
 	}
+
+	@Override
+	public User loadUser(long id) {
+		   User user = userDao.findOne(id);
+		   return user;
+	}
+
+	@Transactional
+	@Override
+	public void updateUser(UserForm userForm) {
+		 User user = userDao.findOne(userForm.getId());
+              user.setUserName(userForm.getUserName());
+              user.setFirstName(userForm.getFirstName());
+              user.setLastName(userForm.getLastName());
+              user.setEmail(userForm.getEmail());
+              user.setMobileNo(userForm.getMobileNo());
+              user.setAddress(userForm.getAddress());
+              user.setCountryId(userForm.getCountryId());
+              user.setStateId(userForm.getStateId());
+              user.setCityId(userForm.getCityId());
+              user.setEnabled(userForm.isEnabled());
+              
+    }
 
 }
