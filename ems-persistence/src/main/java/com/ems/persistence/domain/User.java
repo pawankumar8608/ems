@@ -18,8 +18,10 @@ import com.ems.persistence.domain.common.City;
 import com.ems.persistence.domain.common.Country;
 import com.ems.persistence.domain.common.State;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 
 @Entity
+@Data
 @Table(name="user")
 public class User implements Serializable{
 
@@ -101,7 +103,7 @@ public class User implements Serializable{
 	@DateTimeFormat(pattern="dd/MM/yyyy")
 	private Calendar last_date_access;
 	
-	public long getId() {
+	/*public long getId() {
 		return id;
 	}
 
@@ -243,6 +245,6 @@ public class User implements Serializable{
 
 	public void setCity(City city) {
 		this.city = city;
-	}
+	}*/
 	
 }
